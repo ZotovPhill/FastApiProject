@@ -1,0 +1,8 @@
+fixtures:
+  base_dir: app.orm.fixtures.models.v1
+  load:
+    Address:
+      attributes:
+        quantity: 50
+      class: LoadAddress
+      module: load_address
