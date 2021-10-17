@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     refresh_token_expires: int
     new_refresh_on_update: bool
     database_url: str
+    async_database_url: str
     celery_broker_url: str
     celery_result_backend: str
     root_path: str

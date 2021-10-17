@@ -3,7 +3,7 @@ from dependency_injector.wiring import Provide, inject
 from fpgen.command.fixtures import load_fixtures, create_config
 
 from app.containers.repositories import DatabaseContainer
-from app.orm.repositories.base import Database
+from app.orm.database import Database
 
 
 # WIP!!!

@@ -14,7 +14,7 @@ RUN apt-get -y update \
 RUN python -m pip install -U pip
 RUN pip install poetry
 
-WORKDIR /usr/src/erp
+WORKDIR /usr/src/fapi
 
 ENV PATH /fastapiproject/.venv/bin:$PATH
 ENV PYTHONPATH "${PYTHONPATH}:/fastapiproject/.venv/bin"
@@ -22,7 +22,7 @@ ENV PYTHONPATH "${PYTHONPATH}:/fastapiproject/.venv/bin"
 ARG SYSTEM_PATH=system/python
 COPY ["${SYSTEM_PATH}/*", "./"]
 RUN poetry config virtualenvs.create false \
-  && poetry install
+  && poetry install -E apgsql
 
 COPY app app
 RUN chmod +x entrypoint.sh entrypoint-celery.sh
