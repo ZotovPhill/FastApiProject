@@ -32,8 +32,8 @@ class Product(BaseUUIDModel):
         "Category",
         cascade="all, delete",
         passive_deletes=True,
-        backref=backref('products', lazy='dynamic'),
-        remote_side='Category.id'
+        backref=backref("products", lazy="dynamic"),
+        remote_side="Category.id"
     )
     unit_id = Column(
         UUID(as_uuid=True),
@@ -43,8 +43,8 @@ class Product(BaseUUIDModel):
         "Unit",
         cascade="all, delete",
         passive_deletes=True,
-        backref=backref('products', lazy='dynamic'),
-        remote_side='Unit.id'
+        backref=backref("products", lazy="dynamic"),
+        remote_side="Unit.id"
     )
 
     @hybrid_property
@@ -81,10 +81,10 @@ class Product(BaseUUIDModel):
         return self._is_visible
 
     __table_args__ = (
-        CheckConstraint(unit_price >= 0, name='unit_price_non_negative_constraint'),
-        CheckConstraint(units_per_package >= 0, name='quantity_per_unit_non_negative_constraint'),
-        CheckConstraint(_units_in_stock >= 0, name='quantity_per_unit_non_negative_constraint'),
-        Index("category", "category_id"),
-        Index("visible", "id", func.IF(is_visible == 1)),
+        CheckConstraint(unit_price >= 0, name="unit_price_non_negative_constraint"),
+        CheckConstraint(units_per_package >= 0, name="units_per_package_non_negative_constraint"),
+        CheckConstraint(_units_in_stock >= 0, name="units_in_stock_non_negative_constraint"),
+        Index("ix_product_category_id", "category_id"),
+        Index("ix_product_id_is_visible", "id", func.IF(is_visible == 1)),
         {}
     )

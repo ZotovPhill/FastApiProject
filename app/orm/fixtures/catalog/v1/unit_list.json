@@ -1,0 +1,30 @@
+[
+  {
+    "name": "metre",
+    "description": "Quantity: Length, Symbol: m"
+  },
+  {
+    "name": "kilogram",
+    "description": "Quantity: Mass, Symbol: kg"
+  },
+  {
+    "name": "second",
+    "description": "Quantity: Time, Symbol: s"
+  },
+  {
+    "name": "ampere",
+    "description": "Quantity: Electric current, Symbol: A"
+  },
+  {
+    "name": "mole",
+    "description": "Quantity: Amount of substance, Symbol: mol"
+  },
+  {
+    "name": "kelvin",
+    "description": "Quantity: Thermodynamic temperature, Symbol: K"
+  },
+  {
+    "name": "candela",
+    "description": "Quantity: Luminous intensity, Symbol: cd"
+  }
+]

@@ -6,3 +6,21 @@ fixtures:
         quantity: 50
       class: LoadAddress
       module: load_address
+    Unit:
+      module: load_unit
+      class: LoadUnit
+      attributes:
+        quantity: 20
+        catalog: "app/fixtures/catalog/v1/unit_list.json"
+        autoload: True
+    Category:
+      module: load_category
+      class: LoadCategory
+      attributes:
+        quantity: 20
+        autoload: True
+    Goods:
+      module: load_goods
+      class: LoadGoods
+      attributes:
+        quantity: 1000

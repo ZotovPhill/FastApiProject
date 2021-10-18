@@ -1,3 +1,4 @@
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.sql.schema import Column, ForeignKey, Index
 from sqlalchemy import String, Text, Integer
@@ -8,7 +9,7 @@ class Category(BaseUUIDModel):
     __tablename__ = "gds_category"
 
     name = Column(String, unique=True)
-    root_id = Column(Integer, ForeignKey("gds_category"))
+    root_id = Column(UUID(as_uuid=True), ForeignKey("gds_category"))
     description = Column(Text)
     children = relationship(
         "Category",
@@ -16,6 +17,6 @@ class Category(BaseUUIDModel):
     )
 
     __table_args__ = (
-        Index("category", "root_id"),
+        Index("ix_category_root_id", "root_id"),
         {}
     )
