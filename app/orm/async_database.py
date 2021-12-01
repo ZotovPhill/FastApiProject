@@ -1,8 +1,9 @@
 import contextlib
 from asyncio import current_task
-from contextlib import contextmanager, AbstractContextManager
+from contextlib import AbstractContextManager
 from typing import Callable
 
+from prompt_toolkit.eventloop.async_context_manager import asynccontextmanager
 from sqlalchemy import orm
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.ext.asyncio import create_async_engine, async_scoped_session
@@ -39,7 +40,7 @@ class AsyncDatabase:
         async with self._engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
 
-    @contextmanager
+    @asynccontextmanager
     async def session(self) -> Callable[..., AbstractContextManager[AsyncSession]]:
         session: Session = self._session_factory()
         try:

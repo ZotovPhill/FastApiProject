@@ -80,14 +80,5 @@ class QueryParam(BaseModel):
     paginator: Optional[BasePaginator]
 
     @classmethod
-    async def as_obj(
-            cls,
-            filter: Optional[str],
-            sort: Optional[str],
-            paginator: Optional[str]
-    ):
-        return cls(
-            filter=json.loads(filter),
-            sort=json.loads(sort),
-            paginator=json.loads(paginator)
-        )
+    def as_obj(cls, schema):
+        return cls.parse_obj({key: json.loads(value) for key, value in schema.items()})
